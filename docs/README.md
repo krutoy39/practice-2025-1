@@ -4,7 +4,7 @@
 **Название:** Симулятор раздачи листовок
 
 ## Вариативная часть
-C#: Creating a Roguelike Game in C#
+Python: Create a Simple Python Text Editor!
 
 ---
 
