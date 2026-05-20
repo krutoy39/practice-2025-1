@@ -4,7 +4,7 @@
 Данное руководство предназначено для начинающих программистов, которые хотят создать полноценное приложение с графическим интерфейсом на Python. В результате вы получите работающий текстовый редактор с функциями: создание и редактирование текстовых файлов, открытие существующих файлов через диалоговое окно, сохранение файлов с выбором расположения, поиск текста с подсветкой всех совпадений, подсчёт слов, символов и строк в реальном времени, переключение между светлой и тёмной темой оформления, выбор шрифта, полоса прокрутки, отмена действий.
 
 
-![Главное окно редактора](src%2Fscreenshots/main_window.png)
+![Главное окно редактора](screenshots/main_window.png)
 
 1. Исследование предметной области
 
@@ -31,7 +31,7 @@ root.geometry("700x500")
 
 Что происходит: tk.Tk() создаёт главное окно, title() задаёт заголовок, geometry() устанавливает размер.
 
-https://screenshots/step1_empty_window.png
+![Создание пустого окна](screenshots/step1_empty_window.png)
 
 Шаг 2. Создание текстового поля с прокруткой
 
@@ -53,7 +53,7 @@ root.grid_columnconfigure(0, weight=1)
 
 Объяснение: Frame(root) создаёт контейнер, grid размещает его, sticky="nsew" позволяет растягиваться, Text(...) создаёт текстовое поле с включённой историей изменений.
 
-https://screenshots/step2_text_area.png
+![Текстовое поле с прокруткой](screenshots/step2_text_area.png)
 
 Шаг 3. Функция сохранения файла
 
@@ -69,7 +69,7 @@ root.title(f"Text Editor - {savelocation}")
 
 Что происходит: text.get("1.0", "end-1c") получает весь текст, asksaveasfilename() открывает диалог сохранения, with open(...) записывает файл.
 
-https://screenshots/step3_save_dialog.png
+![Диалог сохранения файла](screenshots/step3_save_dialog.png)
 
 Шаг 4. Модификация — открытие файлов
 
@@ -84,7 +84,7 @@ text.delete("1.0", tk.END)
 text.insert("1.0", content)
 root.title(f"Text Editor - {open_path}")
 
-https://screenshots/step4_open_dialog.png
+![Диалог открытия файла](screenshots/step4_open_dialog.png)
 
 Шаг 5. Модификация — тёмная тема
 
@@ -106,7 +106,7 @@ text_frame.configure(bg="#f0f0f0")
 text.configure(bg="white", fg="black", insertbackground="black")
 scrollbar.configure(bg="#e0e0e0", troughcolor="#f0f0f0")
 
-https://screenshots/step5_themes.png
+![Светлая и тёмная темы](screenshots/step5_themes.png)
 
 Шаг 6. Модификация — счётчик слов
 
@@ -123,7 +123,7 @@ word_count_label.config(text=f"Слов: {word_count} | Символов: {char_
 
 text.bind("<KeyRelease>", update_word_count)
 
-https://screenshots/step6_word_counter.png
+![Счётчик слов](screenshots/step6_word_counter.png)
 
 Шаг 7. Модификация — поиск текста с подсветкой
 
@@ -151,7 +151,8 @@ text.see("1.0")
 else:
 messagebox.showinfo("Результат поиска", "Текст не найден")
 
-https://screenshots/step7_search.png
+![Поиск текста с подсветкой](screenshots/step7_search.png) (screenshots/step7(2)_search.png)
+
 
 Шаг 8. Создание панели кнопок
 
@@ -175,7 +176,6 @@ search_button.pack(side=tk.LEFT, padx=2, pady=5)
 dark_button = tk.Button(button_frame, text="🌙 Dark Mode", command=toggle_theme, padx=10)
 dark_button.pack(side=tk.LEFT, padx=2, pady=5)
 
-https://screenshots/step8_buttons.png
 
 Шаг 9. Выбор шрифта
 
