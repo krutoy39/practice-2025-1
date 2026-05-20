@@ -25,7 +25,7 @@
     <h2>Введение</h2>
     <p>Данное руководство предназначено для начинающих программистов, которые хотят создать полноценное приложение с графическим интерфейсом на Python. В результате вы получите работающий текстовый редактор с функциями: создание и редактирование текстовых файлов, открытие существующих файлов через диалоговое окно, сохранение файлов с выбором расположения, поиск текста с подсветкой всех совпадений, подсчёт слов, символов и строк в реальном времени, переключение между светлой и тёмной темой оформления, выбор шрифта, полоса прокрутки, отмена действий.</p>
 
-    <img src="../src/screenshots/main_window.png" alt="Главное окно редактора" style="max-width:100%; border-radius:8px; margin:10px 0;">
+    <img src="../src/screenshots/step1_empty_window.png" alt="Главное окно редактора" style="max-width:100%; border-radius:8px; margin:10px 0;">
 
     <h2>1. Исследование предметной области</h2>
 
@@ -146,6 +146,7 @@ def search_text():
     else:
         messagebox.showinfo("Результат поиска", "Текст не найден")</pre>
     <img src="../src/screenshots/step7_search.png" alt="Поиск текста с подсветкой" style="max-width:100%; border-radius:8px; margin:10px 0;">
+    <img src="../src/screenshots/step7(2)_search.png" alt="Поиск текста с подсветкой" style="max-width:100%; border-radius:8px; margin:10px 0;">
 
     <h3>Шаг 8. Создание панели кнопок</h3>
     <pre style="background:#f4f4f4; padding:10px; border-radius:5px; overflow-x:auto;">
@@ -166,7 +167,6 @@ search_button.pack(side=tk.LEFT, padx=2, pady=5)
 
 dark_button = tk.Button(button_frame, text="🌙 Dark Mode", command=toggle_theme, padx=10)
 dark_button.pack(side=tk.LEFT, padx=2, pady=5)</pre>
-    <img src="../src/screenshots/step8_buttons.png" alt="Панель кнопок" style="max-width:100%; border-radius:8px; margin:10px 0;">
 
     <h3>Шаг 9. Выбор шрифта</h3>
     <pre style="background:#f4f4f4; padding:10px; border-radius:5px; overflow-x:auto;">
