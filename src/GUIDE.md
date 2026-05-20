@@ -151,7 +151,7 @@ text.see("1.0")
 else:
 messagebox.showinfo("Результат поиска", "Текст не найден")
 
-![Поиск текста с подсветкой](screenshots/step7_search.png) (screenshots/step7(2)_search.png)
+![Поиск текста с подсветкой](screenshots/step7_search.png)
 
 
 Шаг 8. Создание панели кнопок
@@ -209,7 +209,7 @@ text.bind("<KeyRelease>", update_word_count)
 
 root.mainloop()
 
-3. Сводная таблица всех модификаций
+3. Списко всех модификаций
 
 Модификация 1: Открытие файлов (функция open_file). Реализация: диалог выбора файла, чтение и вставка в текстовое поле.
 
