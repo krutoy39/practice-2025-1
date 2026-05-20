@@ -152,7 +152,7 @@ else:
 messagebox.showinfo("Результат поиска", "Текст не найден")
 
 ![Поиск текста с подсветкой](screenshots/step7_search.png)
-
+![Поиск текста с подсветкой 2](screenshots/step7(2)_search.png)
 
 Шаг 8. Создание панели кнопок
 
