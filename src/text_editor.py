@@ -1,12 +1,11 @@
 import tkinter as tk
 from tkinter import filedialog, simpledialog, messagebox
 
-# Создаём главное окно
 root = tk.Tk()
 root.title("Text Editor")
-root.geometry("700x500")  # Сделаем окно побольше для удобства
+root.geometry("700x500") 
 
-# Создаём текстовое поле с полосой прокрутки
+
 text_frame = tk.Frame(root)
 text_frame.grid(row=0, column=0, columnspan=5, sticky="nsew")
 
@@ -17,12 +16,10 @@ text = tk.Text(text_frame, yscrollcommand=scrollbar.set, undo=True)
 text.pack(fill=tk.BOTH, expand=True)
 scrollbar.config(command=text.yview)
 
-# Настройка растягивания окна
+
 root.grid_rowconfigure(0, weight=1)
 root.grid_columnconfigure(0, weight=1)
 
-
-# --- Функция сохранения файла ---
 def saveas():
     global text
     t = text.get("1.0", "end-1c")
@@ -35,7 +32,6 @@ def saveas():
         root.title(f"Text Editor - {savelocation}")
 
 
-# --- Модификация 1: Открытие файлов ---
 def open_file():
     open_path = filedialog.askopenfilename(defaultextension=".txt",
                                            filetypes=[("Text files", "*.txt"),
@@ -48,7 +44,6 @@ def open_file():
         root.title(f"Text Editor - {open_path}")
 
 
-# --- Модификация 2: Тёмная тема ---
 dark_mode = False
 
 
@@ -74,45 +69,37 @@ def toggle_theme():
         word_count_label.configure(bg="#f0f0f0", fg="#666666")
 
 
-# --- Модификация 3: Очистить всё ---
 def clear_all():
     """Очищает всё текстовое поле"""
     if messagebox.askyesno("Подтверждение", "Вы уверены, что хотите очистить весь текст?"):
         text.delete("1.0", tk.END)
-        update_word_count()  # Обновляем счётчик
+        update_word_count() 
 
 
-# --- Модификация 4: Счётчик слов ---
 def update_word_count(event=None):
     """Обновляет счётчик слов в реальном времени"""
     content = text.get("1.0", "end-1c")
 
-    # Считаем символы (без пробелов и с пробелами)
     char_count = len(content)
     char_no_space = len(content.replace(" ", "").replace("\n", ""))
 
-    # Считаем слова
     words = content.split()
     word_count = len(words)
-
-    # Считаем строки
+    
     lines = content.split("\n")
     line_count = len(lines)
 
     word_count_label.config(text=f"Слов: {word_count} | Символов: {char_count} | Строк: {line_count}")
 
 
-# --- Модификация 5: Поиск текста ---
 def search_text():
     """Поиск текста в документе"""
     search_term = simpledialog.askstring("Поиск", "Введите текст для поиска:")
     if not search_term:
         return
 
-    # Снимаем предыдущую подсветку
     text.tag_remove("search", "1.0", tk.END)
 
-    # Ищем все вхождения
     start_pos = "1.0"
     found_count = 0
 
@@ -126,19 +113,16 @@ def search_text():
         found_count += 1
         start_pos = end_pos
 
-    # Настройка подсветки найденного
+
     text.tag_config("search", background="yellow", foreground="black")
 
-    # Показываем результат
     if found_count > 0:
         messagebox.showinfo("Результат поиска", f"Найдено {found_count} совпадений")
-        # Перемещаемся к первому результату
         text.see("1.0")
     else:
         messagebox.showinfo("Результат поиска", "Текст не найден")
 
 
-# --- Кнопки ---
 button_frame = tk.Frame(root)
 button_frame.grid(row=1, column=0, columnspan=5, sticky="ew")
 
@@ -158,7 +142,6 @@ dark_button = tk.Button(button_frame, text="🌙 Dark Mode", command=toggle_them
 dark_button.pack(side=tk.LEFT, padx=2, pady=5)
 
 
-# --- Меню шрифта ---
 def FontHelvetica():
     global text
     text.config(font=("Helvetica", 12))
@@ -180,14 +163,11 @@ courier = tk.IntVar()
 font.menu.add_checkbutton(label="Helvetica", variable=helvetica, command=FontHelvetica)
 font.menu.add_checkbutton(label="Courier", variable=courier, command=FontCourier)
 
-# --- Счётчик слов (внизу) ---
 word_count_label = tk.Label(root, text="Слов: 0 | Символов: 0 | Строк: 0",
                             font=("Arial", 9), anchor="w")
 word_count_label.grid(row=2, column=0, columnspan=5, sticky="ew", padx=5, pady=2)
 
-# Привязываем обновление счётчика к изменению текста
 text.bind("<KeyRelease>", update_word_count)
 text.bind("<<Modified>>", update_word_count)
 
-# Запускаем приложение
 root.mainloop()
